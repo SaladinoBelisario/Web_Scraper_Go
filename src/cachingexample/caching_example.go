@@ -15,6 +15,7 @@ func main() {
 	// Set this to true to inform us if the responses are being read from a cache
 	cache.MarkCachedResponses = true
 	cachedClient := cache.Client()
+
 	// Make the initial request
 	println("Caching: http://www.example.com/index.html")
 	resp, err := cachedClient.Get("http://www.example.com/index.html")
@@ -34,7 +35,7 @@ func main() {
 	}
 
 	// Look for the flag added by httpcache to show the result is read from the cache
-	_, ok = resp.Header["X-From-Cache"]
+	_, ok := resp.Header["X-From-Cache"]
 	if ok {
 		println("Result was pulled from the cache!")
 	}
